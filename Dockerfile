@@ -1,4 +1,4 @@
-FROM pytorch/pytorch:lastest
+FROM pytorch/pytorch:latest
 
 RUN apt update -y && \
     apt upgrade -y && \
