@@ -13,11 +13,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Set timestamp variable
+      run: echo "timestamp=$(date +%Y-%m-%dT%H:%M:%S)" >> "$GITHUB_ENV"
+
     - name: Checkout source code
       uses: actions/checkout@v3
 
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag program/kimage:$(date +%s)
+      run: docker build . --file Dockerfile --tag program/kimage:${{ env.timestamp }}
 
     - name: Login to DockerHub
       uses: docker/login-action@v2.1.0
@@ -26,4 +29,4 @@ jobs:
         password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
     - name: Push image to DockerHub
-      run: docker push program/kimage:$(date +%s)
+      run: docker push progklam/kimage:${{ env.timestamp }}
