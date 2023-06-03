@@ -32,7 +32,8 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
-    - name: Push image to DockerHub
-      run: |
-        docker push program/kimage:${{ env.timestamp }} \
-                    program/kimage:latest
+    - name: Push ts-tagged image to DockerHub
+      run: docker push program/kimage:${{ env.timestamp }}
+
+    - name: Push latest image to DockerHub
+      run: docker push program/kimage:latest
