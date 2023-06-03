@@ -15,6 +15,10 @@ RUN apt update -y && \
     apt upgrade -y && \
     apt install -y git curl && \
     apt autoremove -y && \
+    echo "alias cls='clear'" >> /root/.bashrc && \
+    echo "alias l='ls -la --color'" >> /root/.bashrc && \
+    echo "alias ..='cd ..'" >> /root/.bashrc && \
+    echo "alias ...='cd ../..'" >> /root/.bashrc && \
     pip install --upgrade pip && \
     python -m pip install milvus && \
     pip install openai && \
