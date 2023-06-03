@@ -17,9 +17,6 @@ jobs:
       options: --user root
 
     steps:
-    - name: Fix permission issue
-      run: sudo mkdir -p /var/lib/apt/lists/partial
-
     - name: Set timestamp variable
       run: echo "timestamp=$(date +%Y-%m-%d_%H-%M-%S)" >> "$GITHUB_ENV"
 

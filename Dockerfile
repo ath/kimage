@@ -8,8 +8,7 @@ ENV G40K_MDL $PTV2/G40k.pth
 ENV F0D40K_MDL $PTV2/f0D40k.pth
 ENV F0G40K_MDL $PTV2/f0G40k.pth
 
-RUN mkdir -p /var/lib/apt/lists/partial && \
-    apt update -y && \
+RUN apt update -y && \
     apt upgrade -y && \
     apt autoremove -y && \
     pip install --upgrade pip && \
