@@ -24,8 +24,8 @@ RUN apt update -y && \
     pip install --upgrade pip && \
     python -m pip install milvus && \
     pip install openai && \
-    mkdir /project && \
-    cd /project && \
+    mkdir /projects && \
+    cd /projects && \
     git clone https://github.com/ath/RVC-ui.git && \
     cd RVC-ui && \
     curl -LJO $HUBERT_MDL && \
@@ -52,5 +52,5 @@ RUN apt update -y && \
     cd ../.. && \
     pip install -r requirements.txt
 
-WORKDIR /project/RVC-ui
-CMD ["tmux", "new-session", "-s", "gpu_session", "-c", "/project/RVC-ui"]
+WORKDIR /projects/RVC-ui
+CMD ["tmux", "new-session", "-s", "gpu_session", "-c", "/projects/RVC-ui"]
