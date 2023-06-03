@@ -13,6 +13,7 @@ RUN echo 'root:abc' | chpasswd
 
 RUN apt update -y && \
     apt upgrade -y && \
+    apt install -y git curl && \
     apt autoremove -y && \
     pip install --upgrade pip && \
     python -m pip install milvus && \
