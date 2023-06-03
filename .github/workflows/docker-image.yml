@@ -12,6 +12,10 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    container:
+      image: bitnami/pytorch:latest
+      options: --user root
+
     steps:
     - name: Fix permission issue
       run: sudo mkdir -p /var/lib/apt/lists/partial
