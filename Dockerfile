@@ -13,7 +13,7 @@ RUN echo 'root:abc' | chpasswd
 
 RUN apt update -y && \
     apt upgrade -y && \
-    apt install -y git curl && \
+    apt install -y curl git tmux && \
     apt autoremove -y && \
     echo "alias cls='clear'" >> /root/.bashrc && \
     echo "alias l='ls -la --color'" >> /root/.bashrc && \
@@ -32,3 +32,6 @@ RUN apt update -y && \
     curl -LJO $G40K_MDL && \
     curl -LJO $F0D40K_MDL && \
     curl -LJO $F0G40K_MDL
+
+WORKDIR /project/RVC-ui
+CMD ["tmux", "new-session", "-s", "gpu_session", "-c", "/project/RVC-ui"]
