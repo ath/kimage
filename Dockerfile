@@ -32,6 +32,7 @@ RUN apt update -y && \
     curl -LJO $G40K_MDL && \
     curl -LJO $F0D40K_MDL && \
     curl -LJO $F0G40K_MDL && \
+    cd .. && \
     pip install -r requirements.txt
 
 WORKDIR /project/RVC-ui
