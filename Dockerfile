@@ -2,7 +2,7 @@ FROM bitnami/pytorch:latest
 
 ENV REPO https://huggingface.co/lj1995/VoiceConversionWebUI/resolve/main
 ENV HUBERT_MDL $REPO/hubert_base.pt
-ENV PTV2 $REPO/pretrained_v2/
+ENV PTV2 $REPO/pretrained_v2
 ENV D40K_MDL $PTV2/D40k.pth
 ENV G40K_MDL $PTV2/G40k.pth
 ENV F0D40K_MDL $PTV2/f0D40k.pth
