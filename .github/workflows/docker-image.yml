@@ -12,10 +12,6 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    container:
-      image: bitnami/pytorch:latest
-      options: --user root
-
     steps:
     - name: Set timestamp variable
       run: echo "timestamp=$(date +%Y-%m-%d_%H-%M-%S)" >> "$GITHUB_ENV"
