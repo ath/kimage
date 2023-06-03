@@ -31,7 +31,8 @@ RUN apt update -y && \
     curl -LJO $D40K_MDL && \
     curl -LJO $G40K_MDL && \
     curl -LJO $F0D40K_MDL && \
-    curl -LJO $F0G40K_MDL
+    curl -LJO $F0G40K_MDL && \
+    pip install -r requirements.txt
 
 WORKDIR /project/RVC-ui
 CMD ["tmux", "new-session", "-s", "gpu_session", "-c", "/project/RVC-ui"]
