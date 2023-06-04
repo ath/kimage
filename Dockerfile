@@ -66,5 +66,11 @@ RUN mkdir /projects && \
 RUN cd ../.. && \
     pip install -r requirements.txt
 
+# Place onstart.sh in /root:
+RUN cd /root && \
+    echo "#!/bin/bash" >> onstart.sh && \
+    echo "tmux new-session -s gpu_session -c /projects/RVC-ui" >> onstart.sh && \
+    chmod +x onstart.sh
+
 WORKDIR /projects/RVC-ui
-CMD ["tmux", "new-session", "-s", "gpu_session", "-c", "/projects/RVC-ui"]
+#CMD ["tmux", "new-session", "-s", "gpu_session", "-c", "/projects/RVC-ui"]
