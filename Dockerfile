@@ -62,7 +62,7 @@ RUN mkdir /projects && \
     curl -LJO $UVR5/onnx_dereverb_By_FoxJoy/vocals.onnx
 
 # Install RVC deps:
-RUN cd ../.. && \
+RUN cd /projects/RVC-ui && \
     pip install -r requirements.txt
 
 # Place onstart.sh in /root:
