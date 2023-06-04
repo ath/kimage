@@ -15,7 +15,7 @@ RUN echo 'root:abc' | chpasswd
 
 RUN apt update -y && \
     apt upgrade -y && \
-    apt install -y build-essential curl git htop tmux && \
+    apt install -y build-essential curl ffmpeg git htop tmux && \
     apt autoremove -y && \
     echo "alias cls='clear'" >> /root/.bashrc && \
     echo "alias l='ls -la --color'" >> /root/.bashrc && \
