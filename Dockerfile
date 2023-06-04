@@ -29,6 +29,12 @@ RUN echo "alias cls='clear'" >> /root/.bashrc && \
     echo "alias ..='cd ..'" >> /root/.bashrc && \
     echo "alias ...='cd ../..'" >> /root/.bashrc
 
+# Add lines to .bashrc to start tmux on login:
+RUN echo "" >> /root/.bashrc && \
+    echo "if [ -z "$TMUX" ]; then" >> /root/.bashrc && \
+    echo "    tmux attach -t gpu_session || tmux new -s gpu_session -c /projects/RVC-ui" >> /root/.bashrc && \
+    echo "fi" >> /root/.bashrc
+
 # Install some base AI-related packages:
 RUN pip install --upgrade pip && \
     python -m pip install milvus && \
@@ -67,11 +73,11 @@ RUN cd /projects/RVC-ui && \
     pip install --upgrade --force-reinstall torch
 
 # Place onstart.sh in /root and a copy in /projects/RVC-ui:
-RUN cd /root && \
-    echo "#!/bin/bash" >> onstart.sh && \
-    echo "tmux new-session -s gpu_session -c /projects/RVC-ui" >> onstart.sh && \
-    chmod +x onstart.sh && \
-    cp onstart.sh /projects/RVC-ui
+#RUN cd /root && \
+#    echo "#!/bin/bash" >> onstart.sh && \
+#    echo "tmux new-session -s gpu_session -c /projects/RVC-ui" >> onstart.sh && \
+#    chmod +x onstart.sh && \
+#    cp onstart.sh /projects/RVC-ui
 
 WORKDIR /projects/RVC-ui
 #CMD ["tmux", "new-session", "-s", "gpu_session", "-c", "/projects/RVC-ui"]
