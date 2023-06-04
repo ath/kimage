@@ -15,8 +15,7 @@ RUN echo 'root:abc' | chpasswd
 
 # Sources for nvtop:
 RUN sed -i '/^deb.*bullseye main$/a deb http://deb.debian.org/debian bullseye contrib non-free' /etc/apt/sources.list && \
-    sed -i '/^deb.*bullseye-updates main$/a deb http://deb.debian.org/debian bullseye-updates contrib non-free' /etc/apt/sources.list && \
-    sed -i '/^deb.*bullseye\/security main$/a deb http://security.debian.org/debian-security bullseye-security contrib non-free'
+    sed -i '/^deb.*bullseye-updates main$/a deb http://deb.debian.org/debian bullseye-updates contrib non-free' /etc/apt/sources.list
 
 # Upgrade and install packages:
 RUN apt update -y && \
