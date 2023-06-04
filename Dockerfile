@@ -63,7 +63,8 @@ RUN mkdir /projects && \
 
 # Install RVC deps:
 RUN cd /projects/RVC-ui && \
-    pip install -r requirements.txt
+    pip install -r requirements.txt && \
+    pip install --upgrade --force-reinstall torch
 
 # Place onstart.sh in /root and a copy in /projects/RVC-ui:
 RUN cd /root && \
