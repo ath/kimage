@@ -18,18 +18,25 @@ RUN sed -i '/^deb.*bullseye main$/a deb http://deb.debian.org/debian bullseye co
     sed -i '/^deb.*bullseye-updates main$/a deb http://deb.debian.org/debian bullseye-updates contrib non-free' /etc/apt/sources.list && \
     sed -i '/^deb.*bullseye\/security main$/a deb http://security.debian.org/debian-security bullseye-security contrib non-free'
 
+# Upgrade and install packages:
 RUN apt update -y && \
     apt upgrade -y && \
     apt install -y build-essential curl ffmpeg git htop nvtop tmux && \
-    apt autoremove -y && \
-    echo "alias cls='clear'" >> /root/.bashrc && \
+    apt autoremove -y
+
+# Set up aliases:
+RUN echo "alias cls='clear'" >> /root/.bashrc && \
     echo "alias l='ls -la --color'" >> /root/.bashrc && \
     echo "alias ..='cd ..'" >> /root/.bashrc && \
-    echo "alias ...='cd ../..'" >> /root/.bashrc && \
-    pip install --upgrade pip && \
+    echo "alias ...='cd ../..'" >> /root/.bashrc
+
+# Install some base AI-related packages:
+RUN pip install --upgrade pip && \
     python -m pip install milvus && \
-    pip install openai && \
-    mkdir /projects && \
+    pip install openai
+
+# Install RVC-ui:
+RUN mkdir /projects && \
     cd /projects && \
     git clone https://github.com/ath/RVC-ui.git && \
     cd RVC-ui && \
@@ -53,8 +60,10 @@ RUN apt update -y && \
     curl -LJO $UVR5/VR-DeEchoNormal.pth && \
     mkdir onnx_dereverb_By_FoxJoy && \
     cd onnx_dereverb_By_FoxJoy && \
-    curl -LJO $UVR5/onnx_dereverb_By_FoxJoy/vocals.onnx && \
-    cd ../.. && \
+    curl -LJO $UVR5/onnx_dereverb_By_FoxJoy/vocals.onnx
+
+# Install RVC deps:
+RUN cd ../.. && \
     pip install -r requirements.txt
 
 WORKDIR /projects/RVC-ui
