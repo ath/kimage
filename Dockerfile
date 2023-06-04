@@ -13,9 +13,14 @@ ENV UVR5 $REPO/uvr5_weights
 USER root
 RUN echo 'root:abc' | chpasswd
 
+# Sources for nvtop:
+RUN sed -i '/^deb.*bullseye main$/a deb http://deb.debian.org/debian bullseye contrib non-free' /etc/apt/sources.list && \
+    sed -i '/^deb.*bullseye-updates main$/a deb http://deb.debian.org/debian bullseye-updates contrib non-free' /etc/apt/sources.list && \
+    sed -i '/^deb.*bullseye\/security main$/a deb http://security.debian.org/debian-security bullseye-security contrib non-free'
+
 RUN apt update -y && \
     apt upgrade -y && \
-    apt install -y build-essential curl ffmpeg git htop tmux && \
+    apt install -y build-essential curl ffmpeg git htop nvtop tmux && \
     apt autoremove -y && \
     echo "alias cls='clear'" >> /root/.bashrc && \
     echo "alias l='ls -la --color'" >> /root/.bashrc && \
