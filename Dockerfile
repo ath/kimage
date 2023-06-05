@@ -72,13 +72,3 @@ RUN mkdir /projects && \
 RUN cd /projects/RVC-ui && \
     pip install -r requirements.txt && \
     pip install --upgrade --force-reinstall torch
-
-# Place onstart.sh in /root and a copy in /projects/RVC-ui:
-#RUN cd /root && \
-#    echo "#!/bin/bash" >> onstart.sh && \
-#    echo "tmux new-session -s gpu_session -c /projects/RVC-ui" >> onstart.sh && \
-#    chmod +x onstart.sh && \
-#    cp onstart.sh /projects/RVC-ui
-
-WORKDIR /projects/RVC-ui
-#CMD ["tmux", "new-session", "-s", "gpu_session", "-c", "/projects/RVC-ui"]
