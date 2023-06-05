@@ -20,7 +20,8 @@ RUN sed -i '/^deb.*bullseye main$/a deb http://deb.debian.org/debian bullseye co
 # Upgrade and install packages:
 RUN apt update -y && \
     apt upgrade -y && \
-    apt install -y build-essential curl ffmpeg git htop nvtop tmux && \
+    apt install -y build-essential curl ffmpeg git htop nano \
+    nvtop tmux && \
     apt autoremove -y
 
 # Set up aliases:
